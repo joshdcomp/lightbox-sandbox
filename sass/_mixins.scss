@@ -1,0 +1,78 @@
+@mixin highlight($selection_color){
+  ::selection{
+    background-color: $selection_color;
+    color: white;
+    text-shadow: none;
+  }//selection
+  
+  ::-moz-selection{
+    background-color: $selection_color;
+    color: white;
+    text-shadow: none;
+  }//selection
+}//highlight
+
+
+@mixin background_gradient ($from, $to) {
+  background-color: $from;
+  background-image: -moz-linear-gradient($from, $to);
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to));
+  background-image: -webkit-linear-gradient($from, $to);
+  background-image: -o-linear-gradient($from, $to);
+}//bg gradient
+
+@mixin box_shadow ($top, $left, $blur, $spread, $color) {
+  -webkit-box-shadow: $top $left $blur $spread $color;
+  -moz-box-shadow: $top $left $blur $spread $color;
+  box-shadow: $top $left $blur $spread $color;
+}
+
+@mixin prefixed($attr, $value) {
+  -moz-#{$attr}: $value;
+  -webkit-#{$attr}: $value;
+  -o-#{$attr}: $value;
+  #{$attr}: $value;
+}//prefixed
+
+@mixin calc($attr, $default, $expression) {
+  #{$attr}: $default;
+  #{$attr}: -moz-calc(#{$expression});
+  #{$attr}: -webkit-calc(#{$expression});
+  #{$attr}: calc(#{$expression});
+}
+
+@mixin rounded($radius) {
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+}//rounded
+
+@mixin rotate($degrees){
+    -webkit-transform: rotate($degrees);
+       -moz-transform: rotate($degrees);
+        -ms-transform: rotate($degrees);
+         -o-transform: rotate($degrees);
+    transform: rotate($degrees);
+}//rotate()
+
+@mixin scaleY($scale){
+    -webkit-transform: scaleY($scale);
+       -moz-transform: scaleY($scale);
+        -ms-transform: scaleY($scale);
+         -o-transform: scaleY($scale);
+    transform: scaleY($scale);
+}//rotate()
+
+@mixin user_select(){
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}//user_select
+
+
+@mixin ease_out ($duration: .3s) {
+  transition: all $duration;
+  -webkit-transition: all $duration;
+  -moz-transition: all $duration;
+  -o-transition: all $duration;
+}//ease_out

@@ -1,0 +1,153 @@
+//bring in a few mixins I commonly use
+@import 'mixins';
+
+
+//------------------------------------------------------------------------------
+//    Variables
+//------------------------------------------------------------------------------
+//return an rgba balue for grayscale values
+@function shades_of_gray($value, $opacity){
+    @return rgba($value, $value, $value, $opacity);
+}//shades_of_gray
+
+//colors are in rgba with an opacity of .999 to make colors easier to debug and 
+//change. Sass compiles to hex values if you go with rgb
+$white:             shades_of_gray(255, .999);
+$slate:             shades_of_gray(30, .999);
+$robinsEgg:         rgba(180, 220, 220, 0.999);
+
+//semantic color names
+$link_color:        $slate;
+$omni_bgcolor:      $robinsEgg;
+
+//Fonts
+$openSans:  'Open Sans Condensed', sans-serif; //300 normal | 700 bold
+
+//------------------------------------------------------------------------------
+//    BASE STYLES
+//------------------------------------------------------------------------------
+
+@include highlight($robinsEgg);
+
+body {
+	font-family: $openSans; 
+	text-align: center;
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+}
+
+
+h1{
+  font-size: 25px;
+  line-height: 1.2;
+  font-weight: 700;
+  padding: 0;
+}//h1
+
+h2{
+  font-size: 22px;
+  line-height: 1.2;
+  padding: 0;
+}//h2
+
+a {
+  color: $link_color;
+
+  &:hover {
+    color: $link_color;
+  }//:hover
+}//a
+ 
+
+
+body{
+	background-color: $omni_bgcolor;
+  color: $slate;
+  display: block;
+  	max-width: 100%;
+  	box-sizing: border-box;
+  	min-height: 2000px;
+  
+  #fluff{
+    text-align: center;
+    margin-top: 300px;
+  }//#fluff;
+  
+  $overlay_zindex: 200;
+  $lightbox_onload_width: 800px;
+  
+	#lightbox{
+    background-color: $white;
+    position: fixed;
+      //start the box off in the middle
+      @include calc(top, 50%, '50% - 400px');//400px being how tall we assume the height is onload
+      @include calc(left, 50%, '50% - ' + $lightbox_onload_width / 2);//how tall we expect the width onload
+      z-index: $overlay_zindex + 1;
+    display: block;
+      width: $lightbox_onload_width;
+      margin: 0px auto;
+      height: 80%;
+      min-height: 400px;
+      box-sizing: border-box;
+      padding: 20px;
+    @include rounded(2px);
+    //@include prefixed(overflow-y, auto);
+      
+    .close_lightbox{
+      position: absolute;
+        top: 0px;
+        right: -30px;
+      color: $slate;
+      background-color: $white;
+      display: block;
+        height: 35px;
+        width: 35px;
+      font-size: 20px;
+      text-decoration: none;
+      padding-top: 2px;
+      box-sizing: border-box;
+      @include rounded(2px);
+    }//.close_lightbox
+    
+    .gallery{
+      list-style: none;
+      margin: 0px 0px 40px;
+      padding: 0px;
+      width: 100%;
+      
+      li{
+        display: inline-block;
+        margin-right: 10px;
+        @include calc(width, 30px, '(100%/6) - 10px');//10px is for the margin-right
+        
+        &:last-child{
+          margin-right: 0px;
+        }//:last-child
+        
+        img{
+          max-width: 100%;
+        }//img
+      }//li
+    }//#gallery
+    
+    .content_wrapper{
+      display: block;
+        height: 90%;
+        @include prefixed(overflow-y, auto);
+    }//.content_wrapper
+	}//#lightbox
+	
+	#overlay{
+  	background-color: shades_of_gray(0, .6);
+  	position: fixed;
+  	 z-index: $overlay_zindex;
+  	 top: 0px;
+  	 right: 0px;
+  	 bottom: 0px;
+  	 left: 0px;
+  	display: block;
+  	 width: 100%;
+  	 height: 100%;
+	}//#overlay
+}//.omni-wrapper
