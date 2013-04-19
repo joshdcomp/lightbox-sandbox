@@ -1,0 +1,275 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1187\cocoasubrtf340
+{\fonttbl\f0\fswiss\fcharset0 ArialMT;\f1\fmodern\fcharset0 Courier;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red39\green87\blue149;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}
+{\list\listtemplateid2\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid101\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid2}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}{\listoverride\listid2\listoverridecount0\ls2}}
+\margl1440\margr1440\vieww25160\viewh16480\viewkind0
+\deftab720
+\pard\pardeftab720\sa160
+
+\f0\b\fs34 \cf0 HTML5\
+\pard\pardeftab720\sl340\sa200
+
+\b0\fs26 \cf2 We want to be HTML5 compliant. The HTML5 doctype should be used, use semantic block elements where relevant, and feel free to use other HTML5 features\'97given that your code degrade gracefully back to IE7.\'a0{\field{\*\fldinst{HYPERLINK "http://modernizr.com/"}}{\fldrslt \cf3 \ul \ulc3 Modernizr}}\'a0or{\field{\*\fldinst{HYPERLINK "http://code.google.com/p/html5shiv/"}}{\fldrslt \cf3 \ul \ulc3 HTML5shiv}}\'a0are good places to start for solving any of these problems.\
+\pard\pardeftab720\sl340
+
+\f1 \cf2 <!DOCTYPE html>\
+\
+\pard\pardeftab720\sl340\sa200
+
+\f0 \cf2 Safe HTML5 block elements:\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl340
+\ls1\ilvl0\cf2 {\listtext	\'95	}header\
+{\listtext	\'95	}footer\
+{\listtext	\'95	}nav\
+{\listtext	\'95	}aside\
+{\listtext	\'95	}article\
+{\listtext	\'95	}section\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl340
+\ls1\ilvl0\cf3 {\listtext	\'95	}{\field{\*\fldinst{HYPERLINK "http://html5doctor.com/#glossary"}}{\fldrslt \ul Use this list as a reference}}\cf2 \
+\pard\pardeftab720\sa160
+
+\b\fs34 \cf0 \
+Concerning block elements\
+\pard\pardeftab720\sl340\sa200
+
+\b0\fs26 \cf2 Both opening and closing tags for inherently parental block elements\'a0(this would be the\'a0{\field{\*\fldinst{HYPERLINK "http://html5doctor.com/#glossary"}}{\fldrslt \cf3 \ul \ulc3 Sections column in this reference}})\'a0should be on their own line, and they\'a0must have either a class or id attribute defined.\'a0\
+\pard\pardeftab720\sl340\sa200
+
+\i \cf2 No anonymous divs
+\i0 .\'a0\
+Nested tags should be indented by soft tabs (as opposed to no indenting or using the tab character), and should have their own line. Blank lines between tags are allowed, but they're not required.\'a0The closing tag for a parental block element should be immediately followed by a comment with the most descriptive CSS selector for that element (so all ID's and classes should be included\'97this helps with bugfixing CSS rules).\
+This is valid:\
+\pard\pardeftab720\sl340
+
+\f1 \cf2 <div id="author_dropdown_container" class="top_bar_container shiny_element">\
+  <!-- super fun child content content -->\
+</div> <!-- #author_dropdown_container.top_bar_container.shiny_element -->\
+\
+\pard\pardeftab720\sl340\sa200
+
+\f0\i \cf2 or this
+\i0 \
+\pard\pardeftab720\sl340
+
+\f1 \cf2 <div class="text_container">\
+\
+  <p>super fun text in this p tag!!</p>\
+\
+  <p>super fun text in this p tag!!</p>\
+\
+</div> <!-- .div_class --> \
+\
+\pard\pardeftab720\sl340\sa200
+
+\f0\i \cf2 not this
+\i0 \
+\pard\pardeftab720\sl340
+
+\f1 \cf2 <div><p>super fun text in this p tag!!</p><p>super fun text in this p tag!!</p></div>\
+\
+\pard\pardeftab720\sl340\sa200
+
+\f0 \cf2 There are exceptions to this tag-gets-its-own line policy. Namely if the div for some reason is being treated as a content element, or if the div actually has no content. In these instances, you are still required to comment the closing tag with the css selector in the case that the div does get more fleshed out down the road.\'a0\
+All forms and form elements must have semantic id's and classes. No obfuscated funny business. You may only need a quick input to work with your super slick PHP class, but non-semantic form elements make it a nightmare for front-end maintenance.\
+\pard\pardeftab720\sl340\sa200
+
+\i \cf2 This is valid:
+\i0 \
+\pard\pardeftab720\sl340
+
+\f1 \cf2 <input type="text" id="user_name" name"user_name" value="" placeholder="Jane/John Doe" />\
+\
+\pard\pardeftab720\sl340\sa200
+
+\f0\i \cf2 not this
+\i0 \
+\pard\pardeftab720\sl340
+
+\f1 \cf2 <input type="text" id="tt1" name="tt1" vlaue="" />\
+\
+\pard\pardeftab720\sa160
+
+\f0\b\fs34 \cf0 Concerning content elements\
+\pard\pardeftab720\sl340\sa200
+
+\b0\fs26 \cf2 Text-based elements like <p>, <h1-6>, <strong>, or any element specifically for text treatment (<span> tags when used for text) stay on the same line as their content.\'a0No id's or classes are required for these elements, but please be liberal in your use of\'a0
+\i semantic\'a0
+\i0 class- and id-names.\'a0Elements with content extending past 120 characters should be separated by a blank line.\
+<a> tags, when containing other elements (eg <img src="" /> tags), should be treated as a block element, only no comment is required behind the closing tag.\
+If an element warrants an extra comment (for explanation or labelling), the comment should go on the line immediately above the tag in question at the same indentation level. There should be one blank space immediately before and after the comment and the attribute.\'a0\
+\pard\pardeftab720\sl340\sa200
+
+\i \cf2 So this:
+\i0 \
+\pard\pardeftab720\sl340
+
+\f1 \cf2 <!-- IE7 breaks the layout if span is not on the same line as div -->\
+\
+<div class="dropdown_container"><span>\
+\
+\pard\pardeftab720\sl340\sa200
+
+\f0 \cf2 Elements that are semantically tied together (eg, <label for="input1"> with <input name="input1">) should appear on consequent lines with blank lines before and after.\'a0\
+\pard\pardeftab720\sl340
+
+\f1 \cf2 <label for="user_phone_number">Can I have your number</label>\
+\
+<input type="number" id="user_phone_number" name="user_phone_number" value="" placeholder="123..." />\
+\
+<label ...\
+\
+\pard\pardeftab720\sa160
+
+\f0\b\fs34 \cf0 General Rules\
+\pard\pardeftab720\sl340\sa200
+
+\b0\fs26 \cf2 No styles defined in your HTML. You're better than that. All styles should be defined in your CSS. (aka, do not use the style="" attribute, unless absolutely necessary for some sort of dynamic display). The exception to this is when implementing something in Javascript.\'a0\
+Use double quotes for your attribute values. This does wonders\'a0for keeping PHP and HTML separate during templating.\
+\pard\pardeftab720\sa200
+
+\b\fs44 \cf0 SASS\
+\pard\pardeftab720\sa160
+
+\fs34 \cf0 General things\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\sl340
+\ls2\ilvl0
+\b0\fs26 \cf2 {\listtext	\'95	}Use RGB and RGBA values\'85not Hex\
+{\listtext	\'95	}Nest your selectors liberally, but don't be afraid to break things out of heavily qualified selectors.\
+{\listtext	\'95	}Use CSS3 where you can, just make sure that things degrade gracefully.\
+{\listtext	\'95	}Recycle as much as possible, but be wary about making everything a mixin\
+\pard\pardeftab720\sa160
+
+\b\fs34 \cf0 Organizing sub-files and namespacing\
+\pard\pardeftab720\sl340\sa200
+
+\b0\fs26 \cf2 A huge advantage of preprocessed CSS is that you can import files to your hearts content without affecting client load times. This means we can separate our styles out into various files and stop digging for that one border for that one style in the header. Previously, we were separating our stylesheets based on page, and namespacing everything based on a unique body class. This has several problems, one of which is that it's not a very efficient solution in a template environment like Zend to attribute view-specific classes to the body. So we're going to namespace and organize by layout section.\
+So give your files a 'jurisdiction' over a section of a layout, and nest all your style rules inside of a wrapper in that file. So for example '_sidebar.scss' (
+\b important note:
+\b0 \'a0naming your files leading with an underscore\'97eg: sub-dir/_file-name.scss\'97means that you can import them using this syntax:\'a0@import "sub-dir/file-name". It's convenient, and we've adopted the practice) should have all styles pertaining to the sidebar area of the layout (this also means that you should look for a file pertaining to a section of the layout when you're looking to make additions or tweaks).\'a0\
+When in these specially named files for the given section of the layout, namespace your styles by wrapping them in the class or id of the outermost wrapper of that section. So:\
+\pard\pardeftab720\sl340\sa200
+
+\i \cf2 In the layout:
+\i0 \
+\pard\pardeftab720\sl340
+
+\f1 \cf2 <div class="sidebar_wrapper">\
+    <!\'96stuff would usually go here\'96>\
+</div><!-- .sidebar_wrapper -->\
+\
+\pard\pardeftab720\sl340\sa200
+
+\f0\i \cf2 In _sidebar.scss
+\i0 \
+\pard\pardeftab720\sl340
+
+\f1 \cf2 .sidebar_wrapper\{\
+    /*\
+	* Everything pertaining to sidebars goes inside of this wrapper. Everything. Yeah, I'm looking at you.\
+	*/\
+\}//.sidebar_wrapper\
+\
+\pard\pardeftab720\sa160
+
+\f0\b\fs34 \cf0 Comments\
+\pard\pardeftab720\sl340\sa200
+
+\b0\fs26 \cf2 Comments pertaining to sass-specific stuff should use //, not /**/ (this includes multi-line comments). Really the only time you should use /**/ is if a comment needs to be visible in the compiled CSS. /**/ is ok to use if you're commenting out blocks of styles.\
+\pard\pardeftab720\sl340\sa200
+
+\i \cf2 So this:
+\i0 \
+\pard\pardeftab720\sl340
+
+\f1 \cf2 // We're using :after because IE doesn't like :before. You know what sounds \
+// awesome right now? A sandwich\
+p:after\{\
+\pard\pardeftab720\sl340\sa200
+
+\f0 \cf2 	/*\
+	 * super cool styles\
+	*/\
+\pard\pardeftab720\sl340
+
+\f1 \cf2 \}//p:after\
+\
+\pard\pardeftab720\sa160
+
+\f0\b\fs34 \cf0 Variables\
+\pard\pardeftab720\sl340\sa200
+
+\b0\fs26 \cf2 Semantic variables should be the only variables referenced in the style rules. Straight up color variables are considered sacred, and should never leave the temple of the head of style.scss. Same for fonts (dimensions might come later when we get into responsive stuff).\'a0\
+\pard\pardeftab720\sl340\sa200
+
+\i \cf2 So do something like this:
+\i0 \
+
+\i In style.scss:
+\i0 \
+\pard\pardeftab720\sl340
+
+\f1 \cf2 $blue: rgb(0, 20, 190)\
+$p-carat-color: $blue;\
+\
+\pard\pardeftab720\sl340\sa200
+
+\f0\i \cf2 ----
+\i0 \
+
+\i In _
+\i0 some-style.scss:\
+\pard\pardeftab720\sl340
+
+\f1 \cf2 p:after\{\
+	...\
+	background-color: $p-carat-color;\
+\}//p:after\
+\
+\pard\pardeftab720\sl340\sa200
+
+\f0\i \cf2 NOT:
+\i0 \
+\pard\pardeftab720\sl340
+
+\f1 \cf2 p:after\{\
+	background-color: $blue;\
+\}//(for real, if you do this, Josh has a very particular set of skills; skills he has acquired over a very long career...)\
+\
+\pard\pardeftab720\sa160
+
+\f0\b\fs34 \cf0 Closing selectors\'a0\
+\pard\pardeftab720\sl340\sa200
+
+\b0\fs26 \cf2 Because the SASS blocks can get a little\'85tall, at the end of each selector, directly after the closing curly brace repeat the selector that you're closing.\'a0\
+\pard\pardeftab720\sl340
+
+\f1 \cf2 //we're using :after because IE doesn't like :before
+\f0  
+\f1 \
+\
+p\{\
+/* super cool styles specific to p */\
+ &:after\{
+\f0  
+\f1 \
+    /* super cool styles specific to p:after */\
+  \}//:after\
+\}//p:after\
+\
+\pard\pardeftab720\sl340\sa200
+
+\f0\i \cf2 not
+\i0 \
+\pard\pardeftab720\sl340
+
+\f1 \cf2 //we're using :after because IE doesn't like :before\
+p\{\
+ &:after\{\
+      /* super cool styles */\
+ \}\
+\} \
+\pard\pardeftab720\sl340
+
+\f0 \cf2 //no seriously, Josh will hunt you down and end you}
